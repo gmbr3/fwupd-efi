@@ -23,6 +23,10 @@ endif
 efi_ldsdir = get_option('efi-ldsdir')
 efi_incdir = get_option('efi-includedir')
 
+if efi_incdir == ''
+  efi_incdir = join_paths(includedir, 'efi')
+endif
+
 gnu_efi_path_arch = ''
 foreach name : [gnu_efi_arch, EFI_MACHINE_TYPE_NAME]
   if (gnu_efi_path_arch == '' and name != '' and
